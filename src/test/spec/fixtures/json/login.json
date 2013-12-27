@@ -1,0 +1,9 @@
+{
+	"loginCredentials":{
+		"valid": {"username":"admin","password":"admin"},
+		"user_name_empty": {"username":"","password":""},
+		"password_empty": {"username":"","password":""},
+		"user_name_invalid":{"username":"a","password":"admin"},
+		"password_invalid":{"username":"admin","password":"a"}
+	 }
+}
