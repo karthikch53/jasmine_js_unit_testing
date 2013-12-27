@@ -16,46 +16,38 @@ describe('Rules to test function - readValuesFromUI', function() {
 });
 describe('Rules to test function - validate', function() {
 	
+	var data = getJSONFixture('login.json');
+	
 	it('1. Test where user name is empty', function() {
-		var cred = {};
-		cred.username ='';
-		cred.password = 'admin';
+		var cred = data.loginCredentials.user_name_empty;
 		var retValue = validate(cred);
 		expect(retValue.isValid).toBe(false);
 		expect(retValue.reason).toBe("Username/Password cannot be empty.");
 	});
 	
 	it('2. Test where password is empty', function() {
-		var cred = {};
-		cred.username ='admin';
-		cred.password = '';
+		var cred = data.loginCredentials.password_empty;
 		var retValue = validate(cred);
 		expect(retValue.isValid).toBe(false);
 		expect(retValue.reason).toBe("Username/Password cannot be empty.");
 	});
 	
 	it('3. Test where user name is invalid', function() {
-		var cred = {};
-		cred.username ='1';
-		cred.password = 'admin';
+		var cred = data.loginCredentials.user_name_invalid;
 		var retValue = validate(cred);
 		expect(retValue.isValid).toBe(false);
 		expect(retValue.reason).toBe("Invalid Username/Password.");
 	});
 	
 	it('4. Test where password is invalid', function() {
-		var cred = {};
-		cred.username ='admin';
-		cred.password = '1';
+		var cred = data.loginCredentials.password_invalid;
 		var retValue = validate(cred);
 		expect(retValue.isValid).toBe(false);
 		expect(retValue.reason).toBe("Invalid Username/Password.");
 	});
 	
 	it('5. Test where password is invalid', function() {
-		var cred = {};
-		cred.username ='admin';
-		cred.password = 'admin';
+		var cred = data.loginCredentials.valid;
 		var retValue = validate(cred);
 		expect(retValue.isValid).toBe(true);		
 	});
